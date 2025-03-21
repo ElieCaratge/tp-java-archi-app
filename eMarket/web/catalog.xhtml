@@ -11,11 +11,26 @@
         <f:view>
             <h:outputText value="Catalogue des produits" styleClass="title" />
             <h:outputText value="Liste des produits disponibles à la vente." styleClass="paragraph" />
-            <ul>
-                <li><h:outputText value="Produit 1" /></li>
-                <li><h:outputText value="Produit 2" /></li>
-                <li><h:outputText value="Produit 3" /></li>
-            </ul>
+            <h:dataTable value="#{catalogManager.products}" var="product">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID" />
+                    </f:facet>
+                    <h:outputText value="#{product.id}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nom" />
+                    </f:facet>
+                    <h:outputText value="#{product.name}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Prix" />
+                    </f:facet>
+                    <h:outputText value="#{product.price}" />
+                </h:column>
+            </h:dataTable>
             <h:form>
                 <h:commandLink action="tohome">
                     <h:outputText value="Retour à l'accueil" />
