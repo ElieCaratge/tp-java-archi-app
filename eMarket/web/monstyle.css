@@ -12,3 +12,29 @@ p {
 	font-size: 11pt;
 	text-align: justify;
 }
+
+.title {
+    color: purple;
+    font-family: Arial Black, sans-serif;
+    border-bottom: 1px solid purple;
+    font-size: 2em;
+}
+
+.paragraph {
+    font-size: 11pt;
+    text-align: justify;
+}
+
+.link {
+    font-weight: bold;
+    color: orange;
+}
+
+#mainTitle {
+    font-size: 2.5em;
+}
+
+h:outputLink {
+    font-weight: bold;
+    color: green;
+}
