@@ -10,10 +10,43 @@
     <h:body>
         <f:view>
             <h:outputText value="Panier" styleClass="title" />
-            <h:outputText value="Votre panier d'achat." styleClass="paragraph" />
-            <ul>
-                <li><h:outputText value="Aucun produit dans le panier." /></li>
-            </ul>
+            <br />
+            <h:outputText value="Votre panier d'achat." styleClass="paragraph" />     
+            <h:panelGroup rendered="#{empty shoppingCartManager.items}">
+                <ul>
+                    <li><h:outputText value="Aucun produit dans le panier." /></li>
+                </ul>
+            </h:panelGroup>
+            
+            <h:panelGroup rendered="#{not empty shoppingCartManager.items}">
+                <h:dataTable value="#{shoppingCartManager.items}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID" />
+                        </f:facet>
+                        <h:outputText value="#{item.product.id}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nom" />
+                        </f:facet>
+                        <h:outputText value="#{item.product.name}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Prix unitaire" />
+                        </f:facet>
+                        <h:outputText value="#{item.product.price}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Quantité" />
+                        </f:facet>
+                        <h:outputText value="#{item.quantity}" />
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            
             <h:form>
                 <h:commandLink action="tohome">
                     <h:outputText value="Retour à l'accueil" />
