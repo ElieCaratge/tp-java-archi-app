@@ -16,6 +16,18 @@
                 <h:outputText value="le site de CentraleSupelec" />
             </h:outputLink>
             <h:outputText value=", notre partenaire." styleClass="paragraph"/>
+            <ul>
+                <h:form>
+                    <h:commandLink action="tocatalog">
+                        <h:outputText value="Catalogue" />
+                    </h:commandLink>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="toshoppingcart">
+                        <h:outputText value="Panier" />
+                    </h:commandLink>
+                </h:form>
+            </ul>
         </f:view>
     </h:body>
 </html>

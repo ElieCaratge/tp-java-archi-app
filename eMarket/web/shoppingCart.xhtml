@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="monstyle.css" rel="stylesheet" type="text/css" />
+        <title>eMarket - Panier</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:outputText value="Panier" styleClass="title" />
+            <h:outputText value="Votre panier d'achat." styleClass="paragraph" />
+            <ul>
+                <li><h:outputText value="Aucun produit dans le panier." /></li>
+            </ul>
+            <h:form>
+                <h:commandLink action="tohome">
+                    <h:outputText value="Retour à l'accueil" />
+                </h:commandLink>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
