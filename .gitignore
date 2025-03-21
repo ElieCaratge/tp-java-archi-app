@@ -1,5 +1,5 @@
 # Gitignore file for a Java project
-
+db-derby-10.17.1.0-bin
 # Compiled class files
 *.class
 
