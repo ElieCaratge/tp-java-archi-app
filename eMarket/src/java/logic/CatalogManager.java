@@ -77,7 +77,7 @@ public class CatalogManager implements Serializable {
         this.newProductPrice = newProductPrice;
     }
 
-    public String createProduct() {
+    public String addToCart() {
         Product newProduct = new Product();
         newProduct.setId(newProductId);
         newProduct.setName(newProductName);
