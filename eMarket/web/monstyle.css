@@ -34,7 +34,7 @@ p {
     font-size: 2.5em;
 }
 
-h:outputLink {
+a {
     font-weight: bold;
     color: green;
 }
