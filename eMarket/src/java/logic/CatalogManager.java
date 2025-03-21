@@ -3,46 +3,24 @@ package logic;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+import jakarta.ejb.EJB;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import model.Product;
+import facade.ProductFacade;
 
 @Named
 @ApplicationScoped
 public class CatalogManager implements Serializable {
     private List<Product> products;
-    private Integer newProductId;
     private String newProductName;
     private Double newProductPrice;
 
-    public CatalogManager() {
-    }
+    @EJB
+    private ProductFacade productFacade;
 
-    @PostConstruct
-    public void initCatalog() {
-        products = new ArrayList<>();
-        products.add(new Product() {
-            {
-                setId(1);
-                setName("Produit 1");
-                setPrice(10.0);
-            }
-        });
-        products.add(new Product() {
-            {
-                setId(2);
-                setName("Produit 2");
-                setPrice(20.0);
-            }
-        });
-        products.add(new Product() {
-            {
-                setId(3);
-                setName("Produit 3");
-                setPrice(30.0);
-            }
-        });
+    public CatalogManager() {
     }
 
     public List<Product> getProducts() {
@@ -51,14 +29,6 @@ public class CatalogManager implements Serializable {
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
-
-    public Integer getNewProductId() {
-        return newProductId;
-    }
-
-    public void setNewProductId(Integer newProductId) {
-        this.newProductId = newProductId;
     }
 
     public String getNewProductName() {
@@ -77,15 +47,15 @@ public class CatalogManager implements Serializable {
         this.newProductPrice = newProductPrice;
     }
 
+    @PostConstruct
+    public void initCatalog() {
+        products = productFacade.findAll();
+    }
+
     public String addToCart() {
-        Product newProduct = new Product();
-        newProduct.setId(newProductId);
-        newProduct.setName(newProductName);
-        newProduct.setPrice(newProductPrice);
-        products.add(newProduct);
-        newProductId = null;
-        newProductName = null;
-        newProductPrice = null;
+        Product entity = new Product(products.size() + 1, this.newProductName, this.newProductPrice);
+        products.add(entity);
+        productFacade.create(entity);
         return "tocatalog";
     }
 }

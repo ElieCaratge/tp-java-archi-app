@@ -1,13 +1,30 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+
+@Entity
+@Table(name = "PRODUCT")
 public class Product implements Serializable {
+    @Id
+    @Column(name = "ID")
     private Integer id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "SELLING_PRICE")
     private Double price;
 
-    public Product() {
+    public Product(Integer id, String name, Double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
     public Integer getId() {
@@ -32,5 +49,8 @@ public class Product implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Product() {
     }
 }
